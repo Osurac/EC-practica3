@@ -11,6 +11,10 @@
 
 /*--- Definición de macros ---*/
 #define KEY_VALUE_MASK	0x0f
+#define KEY_COL1	0x07
+#define KEY_COL2	0x0b
+#define KEY_COL3	0x0d
+#define KEY_COL4	0x0e
 
 /*--- Variables globales ---*/
 volatile static unsigned char *keyboard_base = (unsigned char *)0x06000000;
@@ -33,9 +37,21 @@ int kb_scan(void)
 		if(( temp & KEY_VALUE_MASK) != KEY_VALUE_MASK) {
 			//COMPLETAR: 
 			//      si está el bit 1 a 0 la tecla es la map[i][3]
+			if((temp & KEY_COL4) == KEY_COL4){
+				value = map[i][3];
+			}
 			//      si está el bit 2 a 0 la tecla es la map[i][2]
+			if((temp & KEY_COL3) == KEY_COL3){
+				value = map[i][2];
+			}
 			//      si está el bit 3 a 0 la tecla es la map[i][1]
+			if((temp & KEY_COL2) == KEY_COL2){
+				value = map[i][1];
+			}
 			//      si está el bit 4 a 0 la tecla es la map[i][0]
+			if((temp & KEY_COL1) == KEY_COL1){
+				value = map[i][0];
+			}
 		}
 	}
 
