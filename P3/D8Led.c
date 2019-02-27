@@ -62,7 +62,7 @@ static unsigned int Digits[] = { DIGIT_0, DIGIT_1, DIGIT_2, DIGIT_3,
 	 							 DIGIT_4, DIGIT_5, DIGIT_6, DIGIT_7, 
 								 DIGIT_8, DIGIT_9, DIGIT_A, DIGIT_B,
 								 DIGIT_C, DIGIT_D, DIGIT_E, DIGIT_F };
-			  					  
+
 void D8Led_init(void)
 {
     LED8ADDR = ~0 ;
@@ -71,11 +71,23 @@ void D8Led_init(void)
 void D8Led_segment(int value)
 {
 	if( (value >= 0) && (value < 8) )
-		//COMPLETAR: utilizar el cï¿½digo de prÃ¡cticas anteirores
+		// COMPLETAR: debemos escribir en el display (LED8ADDR) el valor
+		// correcto para que se ilumine el segmento que está en la posición
+		// value del array Segmentes. Hay que tener en cuente que el display
+		// usa lógica invertida (0 enciende, 1 apaga).
+
+		//LED8ADDR = strb(~Segments[value]);
+		LED8ADDR = ~Segments[value];
 }
 
 void D8Led_digit(int value)
 {
 	if( (value >= 0) && (value < 16) )
-		//COMPLETAR: utilizar el cï¿½digo de la prÃ¡cticas anteirores
+		// COMPLETAR: debemos escribir en el display (LED8ADDR) el valor
+		// correcto para que se ilumine el dígito que está en la posición
+		// value del array Digits. Hay que tener en cuente que el display
+		// usa lógica invertida (0 enciende, 1 apaga).
+
+		//LED8ADDR = strb(~Digits[value]);
+		LED8ADDR = ~Digits[value];
 }

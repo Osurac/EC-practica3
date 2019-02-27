@@ -80,15 +80,28 @@ void leds_switch( void ){
 	leds_display( status );
 }
 
+
 void leds_display( unsigned int leds_status )
 {
 	status = leds_status;
 	
 	// LED 1
 	if( status & LED1 )
-		//COMPLETAR: tomar la implementación de la primera parte
+		//COMPLETAR usando el interfaz del puerto B definido en gpio.h
+		//hay que poner a nivel bajo el bit correspondiente al led 1
+		portB_write(BIT_LED1, LOW);
+	else
+		//COMPLETAR usando el interfaz del puerto B definido en gpio.h
+		//hay que poner a nivel alto el bit correspondiente al led 1
+		portB_write(BIT_LED1, HIGH);
 
 	// LED 2
 	if( status & LED2 )
-		//COMPLETAR: tomar la implementación de la primera parte
+		//COMPLETAR usando el interfaz del puerto B definido en gpio.h
+		//hay que poner a nivel bajo el bit correspondiente al led 2
+		portB_write(BIT_LED2, LOW);
+	else
+		//COMPLETAR usando el interfaz del puerto B definido en gpio.h
+		//hay que poner a nivel alto el bit correspondiente al led 2
+		portB_write(BIT_LED2, HIGH);
 }
